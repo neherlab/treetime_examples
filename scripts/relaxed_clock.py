@@ -1,3 +1,8 @@
+"""
+This script illustrates the use of the relaxed clock model in TreeTime.
+TreeTime currently only supports a normally distributed clock model.
+"""
+
 from __future__ import print_function, division
 import sys
 import numpy as np
@@ -31,7 +36,7 @@ if __name__ == '__main__':
     # the parameter slack penalizes rate deviations from the average rate
     # couplings penalize rate changes between parent and child nodes.
     tt_relaxed.run(root='best', relaxed_clock={"slack":5.0, "coupling":1.0}, max_iter=3,
-               resolve_polytomies=True, Tc=0, time_marginal=False)
+                   resolve_polytomies=True, Tc=0, time_marginal=False)
 
 
 

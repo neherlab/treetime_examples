@@ -1,4 +1,4 @@
-# Estimation of molecular clock models
+# Estimation of evolutionary rates
 
 Molecular clock estimation can be done via the command
 ```bash
@@ -36,8 +36,8 @@ and save a number of files to disk:
 ![rtt](figures/clock_plot.png)
 
 ## Confidence intervals
-In its default setting, `treetime clock` estimates confidence intervals of the evolutionary rate and the Tmrca by minimizing Chi-squared while accounting for covariation in root-to-tip distances.
+In its default setting, `treetime clock` estimates confidence intervals of the evolutionary rate and the Tmrca by maximizing the approximate likelihood while accounting for covariation in root-to-tip distances.
 However, this requires estimation of a timetree and can take a while.
 For a quick estimate without confidence intervals, use `--reroot least-squares`.
-When the branches of the tree are long, `--reroot chisq-rough` can be used instead of `--reroot chisq`.
+When the branches of the tree are long, `--reroot ML-rough` can be used instead of the default `--reroot ML`.
 
