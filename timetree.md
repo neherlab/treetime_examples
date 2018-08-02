@@ -1,6 +1,6 @@
-# Estimation of time-trees
+# Estimation of time scaled phyolgenies
 
-The principal functionality of TreeTime is estimating time trees from an initial tree, a set of date constraints (e.g. tip dates), and an alignment (optional)
+The principal functionality of TreeTime is estimating time trees from an initial tree topology, a set of date constraints (e.g. tip dates), and an alignment (optional)
 ```bash
 treetime --tree data/h3n2_na/h3n2_na_20.nwk --dates data/h3n2_na/h3n2_na_20.metadata.csv --aln data/h3n2_na/h3n2_na_20.fasta --outdir h3n2_timetree
 ```
@@ -43,13 +43,13 @@ Root-Tip-Regression:
 	 h3n2_timetree/timetree.pdf
 
 --- alignment including ancestral nodes saved as
-	 h3n2_timetree/h3n2_na_200_ancestral.fasta
+	 h3n2_timetree/ancestral_sequences.fasta
 
 --- saved divergence times in
-	 h3n2_timetree/h3n2_na_20_dates.tsv
+	 h3n2_timetree/dates.tsv
 
 --- tree saved in nexus format as
-	 h3n2_timetree/h3n2_na_20_timetree.nexus
+	 h3n2_timetree/timetree.nexus
 
 --- root-to-tip plot saved to
 	h3n2_timetree/root_to_tip_regression.pdf
@@ -90,14 +90,4 @@ Such estimates require calculation of the marginal probability distributions of 
 To switch on confidence estimation, pass the flag `--confidence`.
 TreeTime will run another round of marginal timetree reconstruction and determine the region that contains 90% of the marginal probability distribution of the node dates.
 These intervals are drawn into the tree graph and written to the dates file.
-
-
-
-
-
-
-
-However, this requires estimation of a timetree and can take a while.
-For a quick estimate without confidence intervals, use `--reroot least-squares`.
-When the branches of the tree are long, `--reroot ML-rough` can be used instead of the default `--reroot ML`.
 
