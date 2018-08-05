@@ -17,8 +17,8 @@ Please see the following pages that explain usage for different cases:
  * [timetree estimation](timetree.md)
  * [estimation of substitution rates](clock.md)
  * [ancestral sequence reconstruction](ancestral.md)
- * [homoplasy analysis](timetree.md)
- * [discrete traits and mugration models](timetree.md)
+ * [homoplasy analysis](homoplasy.md)
+ * [discrete traits and mugration models](mugration.md)
 
 
 ### TreeTime in python scripts

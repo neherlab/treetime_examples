@@ -1,4 +1,4 @@
-# Estimation of time scaled phyolgenies
+# Estimation of time scaled phylogenies
 
 The principal functionality of TreeTime is estimating time trees from an initial tree topology, a set of date constraints (e.g. tip dates), and an alignment (optional)
 ```bash

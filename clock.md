@@ -1,6 +1,6 @@
 ## Estimation of evolutionary rates and tree rerooting
 
-Treetime can estimate substitution rates and determine which rooting of the tree is most constistent with the sampling dates of the sequences.
+Treetime can estimate substitution rates and determine which rooting of the tree is most consistent with the sampling dates of the sequences.
 This functionality is implemented as subcommand `clock`:
 ```bash
 treetime clock --tree data/h3n2_na/h3n2_na_20.nwk --dates data/h3n2_na/h3n2_na_20.metadata.csv --sequence-len 1400 --outdir clock_results
@@ -49,7 +49,7 @@ However, this requires estimation of a timetree and can take a while.
 For a quick estimate without confidence intervals, use `--reroot least-squares`.
 
 The timetree estimation can be skipped if branches are sufficiently long.
-In this case, divergences along branches are good estimators of the branch length can can be used to calculate the covaration structure among tips.
+In this case, divergences along branches are good estimators of the branch length can can be used to calculate the covariation structure among tips.
 This option is as fast as the `least-squares` option, provides confidence intervals, but is susceptible to a downward bias in rate estimates since less diverged tips tend to be over-weighted.
 
 ### Filtering of tips

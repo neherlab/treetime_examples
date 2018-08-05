@@ -35,7 +35,7 @@ This null expectation is almost always going to be rejected since many sites wil
 Nonetheless, this can be a useful comparison.
 
 Lastly, there is a block that highlights mutations that are most homoplasic.
-By default, `treetime homoplasy` will list the frist 10 mutations -- this behavior can be adjusted using the option `-n`.
+By default, `treetime homoplasy` will list the first 10 mutations -- this behavior can be adjusted using the option `-n`.
 ```
 The ten most homoplasic mutations are:
   mut multiplicity
