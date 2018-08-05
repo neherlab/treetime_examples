@@ -1,16 +1,17 @@
-# Analyzing homoplasies and recurrent mutations using TreeTime
+## Analyzing homoplasies and recurrent mutations using TreeTime
 
 Homoplasies are common if the same mutations are selected independently in many lineages, for example resistance mutations under treatment or cell-culture adaptation.
 Homoplasies are also observed if the sequences used to build a tree underwent recombination or if there was contamination during sample prep and sequencing.
-For all these reasons, a quick and easy way of gathering statistics on homoplasies and spotting sites are sequences that are disproportionally affected by homoplasies is useful.
+For all these reasons, a quick and easy way of gathering statistics on homoplasies and spotting sites and sequences that are disproportionally affected by homoplasies is useful.
 
 After joint reconstruction of ancestral states, it is straight-forward to gather statistics on how often a particular site mutates and how often it hits a particular state.
 The `treetime homoplasy` does exactly that.
-You would call is as
+To perform a simple analysis of homoplasies in a set of sequences, call TreeTime as
 ```bash
 treetime homoplasy --aln data/zika/zika.fasta --tree data/zika/zika.nwk
 ```
 This command will reconstruct ancestral sequences and count how many time a particular site changed along the tree and how often the exact same mutation was observed.
+
 The basic output looks like this:
 ```
 The TOTAL tree length is 6.617e-02 and 674 mutations were observed.
@@ -51,7 +52,7 @@ The ten most homoplasic mutations are:
   A19C  2
 ```
 
-## Additional output
+### Additional output
 `treetime homoplasy` can be run with the flag `--detailed` which will print additional statistics, mostly concerning terminal branches.
 The first extra outputs are on the mutation statistics on terminal branch in analogy to the statistics for the total tree above.
 ```
@@ -81,7 +82,7 @@ Taxons that carry positions that mutated elsewhere in the tree:
   ....
 ```
 
-## VCF input and reduced alignments
+### VCF input and reduced alignments
 When working with larger genomes, sequences are often represented as variants relative to a reference and stored as a vcf file or only variable positions are collated in a fasta file.
 Trees build from such 'variable position only alignments' or SNP matrices have branch length that don't reflect real divergence and need to be rescaled.
 

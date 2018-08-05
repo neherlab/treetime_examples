@@ -1,4 +1,4 @@
-# Estimation of time scaled phylogenies
+## Estimation of time scaled phylogenies
 
 The principal functionality of TreeTime is estimating time trees from an initial tree topology, a set of date constraints (e.g. tip dates), and an alignment (optional)
 ```bash
@@ -59,14 +59,14 @@ In addition, the root-to-tip vs time regression and the tree are drawn and saved
 
 ![rtt](figures/timetree.png)
 
-## Fixed evolutionary rate
+### Fixed evolutionary rate
 If the temporal signal in the data is weak and the clock rate can't be estimated confidently from the data, it is advisable to specify the rate explicitly.
 This can be done using the argument
 ```
 --clock-rate <rate>
 ```
 
-## Specify or estimate coalescent models
+### Specify or estimate coalescent models
 TreeTime can be run either without a tree prior or with a Kingman coalescent tree prior.
 The later is parameterized by a time scale 'Tc' which can vary in time.
 This time scale is often called 'effective population size' Ne, but the appropriate Tc has very little to do with census population sizes.
@@ -84,10 +84,18 @@ treetime --tree data/ebola/ebola.nwk --dates data/ebola/ebola.metadata.csv --aln
 ![rtt](figures/ebola_skyline.png)
 
 
-## Confidence intervals
+### Confidence intervals
 In its default setting, `treetime` does not estimate confidence intervals of divergence times.
 Such estimates require calculation of the marginal probability distributions of the dates of the internal nodes that take about 2-3 times as long as calculating only the jointly maximally likely dates.
 To switch on confidence estimation, pass the flag `--confidence`.
 TreeTime will run another round of marginal timetree reconstruction and determine the region that contains 90% of the marginal probability distribution of the node dates.
 These intervals are drawn into the tree graph and written to the dates file.
 
+### VCF files as input
+In addition to standard fasta files, TreeTime can ingest sequence data in form of vcf files which is common for bacterial data sets where short reads are mapped against a reference and only variable sites are reported.
+The following example with a set of MtB sequences uses a fixed evolutionary rate of 1e-7 per site and year.
+```bash
+treetime --aln data/tb/lee_2015.vcf.gz --vcf-reference data/tb/tb_ref.fasta --tree data/tb/lee_2015.nwk --clock-rate 1e-7 --dates data/tb/lee_2015.metadata.tsv
+```
+For many bacterial data set were the temporal signal in the data is weak, it is advisable to fix the rate of the molecular clock explicitly.
+Divergence times, however, will depend on this choice.

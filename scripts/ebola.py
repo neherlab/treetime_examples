@@ -47,7 +47,7 @@ if __name__ == '__main__':
     # rescale branch length to years and plot in axis 0
     from treetime.treetime import plot_vs_years
     fig, axs = plt.subplots(1,2, sharey=True, figsize=(12,8))
-    plot_vs_years(ebola, years=1, ax=axs[1], confidence=(0.05,0.95), label_func = lambda x:"")
+    plot_vs_years(ebola, step=1, ax=axs[1], confidence=(0.05,0.95), label_func = lambda x:"")
     axs[1].set_xlim(0, 2.5)
     axs[1].set_title("time tree")
 
