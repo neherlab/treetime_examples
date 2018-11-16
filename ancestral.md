@@ -100,6 +100,7 @@ optional arguments:
                         definitions of the parameters in the GTR creation
                         methods in treetime/nuc_models.py or
                         treetime/aa_models.py
+  --aa                  use aminoacid alphabet
   --marginal            marginal reconstruction of ancestral sequences
   --keep-overhangs      do not fill terminal gaps
   --zero-based          zero based mutation indexing

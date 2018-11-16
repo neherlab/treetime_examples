@@ -81,7 +81,7 @@ The following command will run TreeTime on the ebola example data set and estima
 ```bash
 treetime --tree data/ebola/ebola.nwk --dates data/ebola/ebola.metadata.csv --aln data/ebola/ebola.fasta --outdir ebola  --coalescent skyline
 ```
-![rtt](figures/ebola_skyline.png)
+![ebola_skyline](figures/ebola_skyline.png)
 
 
 ### Confidence intervals
@@ -99,3 +99,97 @@ treetime --aln data/tb/lee_2015.vcf.gz --vcf-reference data/tb/tb_ref.fasta --tr
 ```
 For many bacterial data set were the temporal signal in the data is weak, it is advisable to fix the rate of the molecular clock explicitly.
 Divergence times, however, will depend on this choice.
+
+### Additional options
+Documentation of the complete set of options is available by typing
+```bash
+treetime -h
+```
+which yields
+```
+usage: TreeTime: Maximum Likelihood Phylodynamics
+
+positional arguments:
+  {homoplasy,ancestral,mugration,clock,version}
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tree TREE           Name of file containing the tree in newick, nexus, or
+                        phylip format. If none is provided, treetime will
+                        attempt to build a tree from the alignment using
+                        fasttree, iqtree, or raxml (assuming they are
+                        installed)
+  --sequence-length SEQUENCE_LENGTH
+                        length of the sequence, used to calculate expected
+                        variation in branch length. Not required if alignment
+                        is provided.
+  --aln ALN             alignment file (fasta)
+  --vcf-reference VCF_REFERENCE
+                        only for vcf input: fasta file of the sequence the VCF
+                        was mapped to.
+  --dates DATES         csv file with dates for nodes with 'node_name, date'
+                        where date is float (as in 2012.15)
+  --clock-filter CLOCK_FILTER
+                        ignore tips that don't follow a loose clock, 'clock-
+                        filter=number of interquartile ranges from regression'
+  --reroot REROOT       reroot the tree. Valid choices are 'ML', 'ML-rough',
+                        'least-squares', 'min_dev', 'midpoint' or a node name
+                        to be used as outgroup. Use --keep-root to keep the
+                        current root.
+  --keep-root           don't reroot the tree. Otherwise, reroot to minimize
+                        the the residual of the regression of root-to-tip
+                        distance and sampling time
+  --gtr GTR             GTR model to use. '--gtr infer' will infer a model
+                        from the data. Alternatively, specify the model type.
+                        If the specified model requires additional options,
+                        use '--gtr-params' to specify those.
+  --gtr-params GTR_PARAMS [GTR_PARAMS ...]
+                        GTR parameters for the model specified by the --gtr
+                        argument. The parameters should be feed as 'key=value'
+                        list of parameters. Example: '--gtr K80 --gtr-params
+                        kappa=0.2 pis=0.25,0.25,0.25,0.25'. See the exact
+                        definitions of the parameters in the GTR creation
+                        methods in treetime/nuc_models.py or
+                        treetime/aa_models.py
+  --aa                  use aminoacid alphabet
+  --clock-rate CLOCK_RATE
+                        if specified, the rate of the molecular clock won't be
+                        optimized.
+  --clock-std-dev CLOCK_STD_DEV
+                        standard deviation of the provided clock rate estimate
+  --branch-length-mode {auto,input,joint,marginal}
+                        If set to 'input', the provided branch length will be
+                        used without modification. Note that branch lengths
+                        optimized by treetime are only accurate at short
+                        evolutionary distances.
+  --confidence          estimate confidence intervals of divergence times.
+  --keep-polytomies     Don't resolve polytomies using temporal information.
+  --relax [RELAX [RELAX ...]]
+                        use an autocorrelated molecular clock. Prior strength
+                        and coupling of parent and offspring rates can be
+                        specified e.g. as --relax 1.0 0.5
+  --max-iter MAX_ITER   maximal number of iterations the inference cycle is
+                        run. Note that for polytomy resolution and coalescence
+                        models max_iter should be at least 2
+  --coalescent COALESCENT
+                        coalescent time scale -- sensible values are on the
+                        order of the average hamming distance of
+                        contemporaneous sequences. In addition, 'opt'
+                        'skyline' are valid options and estimate a constant
+                        coalescent rate or a piecewise linear coalescent rate
+                        history
+  --plot-tree PLOT_TREE
+                        filename to save the plot to. Suffix will determine
+                        format (choices pdf, png, svg, default=pdf)
+  --plot-rtt PLOT_RTT   filename to save the plot to. Suffix will determine
+                        format (choices pdf, png, svg, default=pdf)
+  --tip-labels          add tip labels (default for small trees with <30
+                        leaves)
+  --no-tip-labels       don't show tip labels (default for small trees with
+                        >=30 leaves)
+  --keep-overhangs      do not fill terminal gaps
+  --zero-based          zero based mutation indexing
+  --report-ambiguous    include transitions involving ambiguous states
+  --verbose VERBOSE     verbosity of output 0-6
+  --outdir OUTDIR       directory to write the output to
+```
