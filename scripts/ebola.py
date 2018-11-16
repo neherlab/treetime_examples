@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # infer an ebola time tree while rerooting and resolving polytomies
     res = ebola.run(root='best', infer_gtr=True, relaxed_clock=False, max_iter=2,
                     branch_length_mode='input', n_iqd=3, resolve_polytomies=True,
-                    Tc='skyline', time_marginal="assign")
+                    Tc='skyline', time_marginal="assign", vary_rate=True)
 
     if res==ttconf.ERROR:
         sys.exit()
