@@ -44,6 +44,17 @@ TreeTime has inferred a GTR model and used it to reconstruct the most likely anc
 The reconstructed sequences will be written to a file ending in `_ancestral.fasta` and a tree with mutations mapped to branches will be saved in nexus format in a file ending on `_mutation.nexus`.
 Mutations are added as comments to the nexus file like `[&mutations="G27A,A58G,A745G,G787A,C1155T,G1247A,G1272A"]`.
 
+### Amino acid sequences
+Ancestral reconstruction of amino acid sequences works analogously to nucleotide sequences.
+However, the user has to either explicitly choose an amino acid substitution model (JTT92)
+```bash
+treetime ancestral --tree data/h3n2_na/h3n2_na_20.nwk  --aln data/h3n2_na/h3n2_na_20_aa.fasta --gtr JTT92
+```
+or specify that this is a protein sequence alignment using the flag `--aa`:
+```bash
+treetime ancestral --tree data/h3n2_na/h3n2_na_20.nwk  --aln data/h3n2_na/h3n2_na_20_aa.fasta --aa
+```
+
 
 ### VCF files as input
 In addition to standard fasta files, TreeTime can ingest sequence data in form of vcf files which is common for bacterial data sets where short reads are mapped against a reference and only variable sites are reported.
